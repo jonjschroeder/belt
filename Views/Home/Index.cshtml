@@ -1,0 +1,68 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h3>Register</h3>
+<form action="register" method="post">
+  
+
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+    <input id="FirstName" type="text" class="form-control" name="FirstName" placeholder="First Name">
+  </div>
+
+    <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-share"></i></span>
+    <input id="LastName" type="text" class="form-control" name="LastName" placeholder="Last Name">
+  </div>
+
+
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+    <input id="email" type="text" class="form-control" name="Email" placeholder="Email">
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+    <input id="password" type="password" class="form-control" name="Password" placeholder="Password">
+  </div>
+
+    <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-check"></i></span>
+    <input id="passwordconfirm" type="password" class="form-control" name="PasswordConfirmation" placeholder="Confirm Password">
+  </div>
+
+    <input type="submit" value="Register" class="btn btn-success">
+
+</form>
+<h3>Log In</h3>
+
+
+<form action = "login" method = "post">
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+    <input id="email" type="text" class="form-control" name="Email" placeholder="Email">
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+    <input id="password" type="password" class="form-control" name="Password" placeholder="Password">
+  </div>
+    <input type="submit" value="Login" class="btn btn-success">
+</form>
+
+<div>
+    @{
+        foreach(var error in ViewBag.Errors)
+        {
+            //If there are any errors for a field...
+            if(@error.Errors.Count > 0)
+            {
+                // We show the first error for that field
+                <p>@error.Errors[0].ErrorMessage</p>
+            }
+        }
+    }
+</div>

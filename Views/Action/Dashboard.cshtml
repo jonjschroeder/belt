@@ -1,0 +1,77 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+<h1>Dojo Activities Center</h1>
+
+
+@{
+    ViewData["Title"] = "Dashboard Page";
+}
+<p><a href="/logout">Log Out</a></p>
+<h4>Welcome @ViewBag.UserName! Start planning your Activities!</h4>
+
+
+<table class = "table table-striped table-boardered">
+    <thread>
+        <tr>
+            <th>Activity</th>
+            <th>Date and Time</th>
+            <th>Duration</th>
+            <th>Event Coordinator ID</th>
+            <th>Number of participants</th>
+            <th>Actions</th>
+
+        </tr>
+    </thread>
+    <tbody>
+         @foreach(var act in ViewBag.AllActivities)
+         {
+        <tr>
+            <td><a href="showpage/@act.ActivitiesId">@act.Title</a></td>
+            <td>@act.Date.ToString("MM/dd/yyyy") @act.Time</td>
+            <td>@act.Duration @act.Hours</td>
+            <td>@act.UserId</td>   
+            <td>@act.Invitations.Count</td>
+            
+
+
+            @if(@ViewBag.Id == @act.UserId)
+            {
+                <form action="Delete/@act.ActivitiesId" method="GET">
+                    <td><button type="submit">Delete</button></td>
+                </form>
+            }
+            else
+            {
+                bool status = false;
+                @foreach(var x in ViewBag.invite)
+                {
+                    @if(@ViewBag.Id == @x.UserId && @x.ActivitiesId == @act.ActivitiesId)
+                   {
+                    status = true;
+                   }
+                 }
+
+                   if(status == true)
+                   {
+                       <form action="UnRSVP/@act.ActivitiesId " method="GET">
+                           
+                           <td><button type="submit">UNRSVP</button></td>
+                        </form>
+                        }
+                   else
+                   {
+                       <form action="RSVP/@act.ActivitiesId" method="POST">
+                           <td><button type="submit">RSVP</button></td>
+                        </form>
+                   }
+            }
+                            
+        </tr>  
+         }            
+    </tbody>  
+</table>
+
+<form action="planpage" method="Get">
+        <input type="submit" value="New Activity" class="btn btn-info">
+</form>

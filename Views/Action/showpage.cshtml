@@ -1,0 +1,50 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+<p><a href="/logout">Log Out</a>  <a href="/Dashboard">Dashboard</a></p>
+<h1>Dojo Activity Center</h1>
+<h4>Event: @ViewBag.CurrentWedding.Title</h4>
+<h3>Event Coordinator: @ViewBag.CurrentWedding.User.FirstName</h3>
+<h4>Description: @ViewBag.CurrentWedding.Description </h4>
+<h4>Guests</h4>
+            @{
+                    foreach (var x in @ViewBag.CurrentWedding.Invitations) {
+                        <li>@x.User.FirstName & @x.User.LastName</li>
+                    }
+            }
+          </ul>
+                    
+                        
+                        @if(@ViewBag.sessionid == @ViewBag.querywed.UserId){
+                            <form action="Delete/@ViewBag.querywed.ActivitiesId" method="GET">
+                                <td><button type="submit">Delete</button></td>
+                            </form>
+                        }
+                        else
+                        {
+                bool status = false;
+                @foreach(var x in ViewBag.invite)
+                {
+                    @if(@ViewBag.Id == @x.UserId && @x.ActivitiesId == @ViewBag.wedid)
+                   {
+                    status = true;
+                   }
+                 }
+
+                   if(status == true)
+                   {
+                       <form action="UnRSVP/@ViewBag.wedid" method="GET">
+                           
+                           <td><button type="submit">UNRSVP</button></td>
+                        </form>
+                        }
+                   else
+                   {
+                       <form action="RSVP/@ViewBag.wedid" method="POST">
+                           <td><button type="submit">RSVP</button></td>
+                        </form>
+                   }
+            }
+                    
+                       
+

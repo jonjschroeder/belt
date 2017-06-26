@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "planpage";
+}
+
+
+<p><a href="/logout">Log Out</a>  <a href="/Dashboard">Dashboard</a></p>
+<h3>Dojo Activity Center</h3>
+
+<form action="Create" method="post">
+
+<div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-queen"></i></span>
+    <input id="WeddingOne" type="text" class="form-control" name="Title" placeholder="Title">
+  </div>
+
+
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-king"></i></span>
+    <input id="WeddingTwo" type="Time" class="form-control" name="Time" placeholder="">
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+    <input id="Date" type="Date" class="form-control" name="Date" placeholder="Date">
+  </div>
+
+<div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+    <input id="Address" type="number" class="form-control" name="Duration" placeholder="Duration">
+  </div>
+<div class="input-group">
+<select name = Hours class = "btn btn-primary dropdown-toggle">
+  <option value="Days">Days</option>
+  <option value="Hours">Hours</option>
+  <option value="Minutes">Minutes</option>
+</select>
+</div>
+    <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-queen"></i></span>
+    <input id="WeddingOne" type="text" class="form-control" name="Description" placeholder="Description">
+  </div>
+
+        <input type="submit" value="Create" class="btn btn-success">
+
+</form>
